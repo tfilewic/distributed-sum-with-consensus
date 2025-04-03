@@ -8,7 +8,6 @@ import org.json.*;
 
 /**
  * Utilities class for shared methods
- * SER321 Assignment 5
  * 
  * @author tfilewic 
  * @version 2025-02-22

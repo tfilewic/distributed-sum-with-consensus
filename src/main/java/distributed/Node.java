@@ -7,7 +7,6 @@ import java.net.Socket;
 
 /**
  * Node class
- * SER321 Assignment 5
  * 
  * @author tfilewic 
  * @version 2025-02-20

@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * PartialSum class to encapsulate a list of numbers and its sum
- * SER321 Assignment 5
  * 
  * @author tfilewic 
  * @version 2025-02-20

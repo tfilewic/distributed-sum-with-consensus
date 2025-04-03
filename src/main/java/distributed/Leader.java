@@ -15,7 +15,6 @@ import java.util.Queue;
 
 /**
  * Leader class
- * SER321 Assignment 5
  * 
  * @author tfilewic 
  * @version 2025-02-22

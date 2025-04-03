@@ -1,4 +1,3 @@
-# SER321 Assignment 5
 # script to run multiple gradle node commands
 # @author tfilewic
 

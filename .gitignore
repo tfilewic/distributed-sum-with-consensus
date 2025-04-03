@@ -1,0 +1,9 @@
+#Gradle
+/build/
+.gradle/
+
+#Compiled Java classes
+*.class
+
+#Eclipseproject
+.classpath

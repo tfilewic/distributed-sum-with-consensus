@@ -1,0 +1,61 @@
+
+plugins {
+	id 'java'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+   implementation group: 'org.json', name: 'json', version: '20200518'
+}
+
+
+
+
+task client(type: JavaExec) {
+ 	group 'application'
+    description 'Starts the Client'
+    
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'distributed.Client'
+    standardInput = System.in
+}
+
+
+task leader(type: JavaExec) {
+ 	group 'application'
+    description 'Starts the Leader'
+    
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'distributed.Leader'
+    standardInput = System.in
+}
+
+
+
+//runs a single node    
+//  -Pid=<int>     the node's id (default 0)
+//  -Pfault=<boolean>   if the node is faulty (default false)
+task node(type: JavaExec) {
+    group = 'application'
+    description = 'Starts a Node'
+    mainClass = 'distributed.Node'
+    classpath = sourceSets.main.runtimeClasspath
+
+    def isFaulty = (project.hasProperty('fault') && (project.property('fault').toBoolean() || project.property('fault') == '1')) ? "true" : "false"
+    args isFaulty
+}
+
+
+//runs a bash script to run multiple noes    
+//  -Pcount=<int>    the total number of nodes to run (default 1)
+//  -Pfaults=<int>   the number of those nodes which should be faulty (default 0)
+task nodes(type: Exec) {
+    group = 'application'
+    description = 'Starts multiple Nodes'
+    def count = project.hasProperty('count') ? project.property('count') : '1'
+    def faults = project.hasProperty('faults') ? project.property('faults') : '0'
+    commandLine 'bash', './runNodes.sh', count, faults
+}

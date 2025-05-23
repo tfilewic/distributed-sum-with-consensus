@@ -18,19 +18,15 @@ public class Node {
     private static Socket socket = null;
     private static PrintWriter out = null;
     private static BufferedReader in = null;
-    
-    
-    
+        
     
     public static void main(String[] args) {          
         configure(args);
         connect();
         System.out.println("Node ready." + (faulty ? "   [faulty]": ""));
         
-        // TODO
         boolean quit = false;
-        while(!quit) {
-            
+        while(!quit) {        
             try {   
                 JSONObject response;
                 String requestString = in.readLine();
@@ -51,18 +47,8 @@ public class Node {
                     System.out.println("\t\t\tnode sent: " + response.toString());//debug
                 }       
             } catch (Exception e ) { 
-              //TODO
-                //disconnect clienthandler
-            }   
-            
-            // TODO  
-            //get request
-            //if sum
-            //if consensus
-            //if quit?
-            
-           
-            
+              quit = true;
+            }      
         }
     }
     
@@ -115,7 +101,6 @@ public class Node {
     }
     
     
-    //TODO exceptions and errors
     private static JSONObject add(JSONObject request) {
         JSONArray valuesArray = request.getJSONArray("values"); 
         int delay = request.getInt("delay");     
@@ -139,7 +124,6 @@ public class Node {
     }
     
     
-    //TODO exceptions and errors
     private static JSONObject check(JSONObject request) {
         JSONArray valuesArray = request.getJSONArray("values"); 
         int thatSum = request.getInt("sum");
@@ -159,7 +143,5 @@ public class Node {
         response.put("same", verified); 
         return response;     
     }
-    
-    
 
 }

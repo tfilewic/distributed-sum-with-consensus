@@ -225,7 +225,9 @@ public class Leader {
     }
     
     /**
-     * TODO
+     * Runs adder threads to check sum consensus
+     *
+     * @return if consensus was established
      */
     private static boolean checkConsensus() {
         consensus = true;
